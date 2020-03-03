@@ -5,7 +5,8 @@
 @section('content')
 
 <div class="container">
-
+<h1>新增最新消息</h1>
+  
 
 <form method="POST" action="/home/news/store">
     @csrf
