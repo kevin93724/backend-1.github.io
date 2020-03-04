@@ -15,7 +15,12 @@ class NewsController extends Controller
     }
     public function store(Request $request) {
         $news_data=$request ->all();
-        News::create($news_data) ->save();
+
+        //上傳檔案
+        $file_name = $request->file('image')->store('','public');
+        $news_data['image'] = $file_name;
+
+        News::create($news_data)->save();
         return redirect ('/home/news');
     }
     public function edit($id) {
@@ -24,9 +29,16 @@ class NewsController extends Controller
     }
     public function update(Request $request, $id) {
 
-        $news_data=$request ->all();
-        News::create($news_data) ->save();
+
+        News::find($id)->update($request->all());
         return redirect ('/home/news');
+    }
+    public function delete(Request $request, $id) {
+
+        // console.log($id);
+        News::find($id)->delete();
+        return redirect ('/home/news');
+        // dd($id);
     }
 
     //

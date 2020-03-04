@@ -19,6 +19,11 @@
     <input type="text" class="form-control" id="title" name="title" value="{{$news->title}}">
   </div>
   <div class="form-group">
+    <label for="title">Sort</label>
+    <input type="number" class="form-control" id="sort" name="sort" value="{{$news->sort}}">
+  </div>
+
+  <div class="form-group">
     <label for="content">Content</label>
 
     <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}">

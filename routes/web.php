@@ -25,6 +25,7 @@ Route::post('/home/news/store', 'NewsController@store');
 
 Route::get('/home/news/edit/{id}', 'NewsController@edit');
 Route::post('/home/news/update/{id}', 'NewsController@update');
-Route::post('/home/news/delete', 'NewsController@delete');
+
+Route::post('/home/news/delete/{id}', 'NewsController@delete');
 
 
