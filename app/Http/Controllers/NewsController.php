@@ -15,12 +15,29 @@ class NewsController extends Controller
     }
     public function store(Request $request) {
         $news_data=$request ->all();
+        dd($news_data)
 
-        //上傳檔案
-        $file_name = $request->file('image')->store('','public');
-        $news_data['image'] = $file_name;
+        //上傳主要圖片
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = $this->fileUpload($file,'news');
+            $news_data['image'] = $path;
+        }
 
-        News::create($news_data)->save();
+        $new_news = News::create($news_data);
+        //Create多張圖片
+        if ($request->hasFile('new_imgs')) {
+            foreach ($files as $file) {
+                //上傳圖片
+                $file_name=
+            }
+
+
+        }
+
+
+
+
         return redirect ('/home/news');
     }
     public function edit($id) {

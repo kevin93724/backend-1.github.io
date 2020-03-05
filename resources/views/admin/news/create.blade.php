@@ -15,6 +15,10 @@
     <input type="file" class="form-control" id="img" name="image" required>
   </div>
   <div class="form-group">
+    <label for="img">IMG</label>
+    <input type="file" class="form-control" id="img" name="image" required>
+  </div>
+  <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" name="title" required>
   </div>
