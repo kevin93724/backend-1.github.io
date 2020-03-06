@@ -27,7 +27,7 @@
         <div class="news_img_card" data-newsimgid="{{$item->id}}">
             <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
             <img class="img-fluid" src="{{$item->image_url}}" alt="">
-            <input class="form-control" type="text" value="{{$item->sore}}">
+            <input class="form-control" type="text" value="{{$item->sort}}">
         </div>
     </div>
     @endforeach

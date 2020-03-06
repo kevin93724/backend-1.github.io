@@ -90,7 +90,7 @@ class NewsController extends Controller
         $item->delete();
 
         //多圖片刪除
-        $news_imgs_1 = news_imgs::where(news_id, $id)->get();
+        $news_imgs_1 = news_imgs::where('news_id', $id)->get();
         foreach ($news_imgs_1 as $news_img) {
             $old_image = $news_img->image;
             if(file_exists(public_path().$old_image)){
