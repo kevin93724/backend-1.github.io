@@ -23,7 +23,6 @@
         </thead>
         <tbody>
           @foreach ($all_news as $item)
-            dd({{$item->image}})
             <tr>
                 <td><img width="120" src="{{$item->image}}" alt=""></td>
                 <td>{{$item->title}}</td>

@@ -12,12 +12,18 @@ class FrontController extends Controller
         return view ('front/index');
     }
     public function news() {
-        $news_data = DB::table('news')->orderBy('sort','desc')->get();
+        // $news_data = DB::table('news')->orderBy('sort','desc')->get();
+        $news_data = News::orderBy('sort','desc')->get();
         return view ('front/news', compact('news_data'));
     }
     public function news_detail($id) {
-        $item = News::find($id);
-                return view ('front/news_detail', compact('item'));
+        // $item = News::find($id);
+        //         return view ('front/news_detail', compact('item'));
+            $news = News::with('news_imgs')->find($id);
+            return view ('front/news_detail', compact('news'));
+
+
+
     }
 
     //
