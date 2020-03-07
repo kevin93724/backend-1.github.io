@@ -17,7 +17,7 @@ class CreateNewsImgTable extends Migration
             $table->bigIncrements('id');
             $table->integer('news_id');
             $table->string('image_url');
-            $table->integer('sore')->default(0);
+            $table->integer('sort')->default(0);
 
             $table->timestamps();
         });

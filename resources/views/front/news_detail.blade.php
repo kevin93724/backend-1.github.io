@@ -6,11 +6,12 @@
 
     <div class="container">
         <div class="media-container-row">
-            {{$news}}
-            dd($news)
+            title:{$news->title}
+            <br>
+            多張圖片：
 
             @@foreach ($news->news_imgs as $news_img)
-        <img width="50" src="{{$news_img->image}}" alt="">
+            <img width="120" src="{{$news->news_imgs}}" alt="">
 
             @endforeach
 

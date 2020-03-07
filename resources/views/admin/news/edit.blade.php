@@ -33,8 +33,8 @@
     @endforeach
 </div>
 <div class="form-group">
-    <label for="title">新增多張圖片組(建議圖片尺寸寬400px x 高200px)</label>
-    <input type="file" class="form-control" id="news_imgs" name="news_imgs[]" required multiple>
+    <label for="img">新增多張圖片組(建議圖片尺寸寬400px x 高200px)</label>
+    <input type="file" class="form-control" id="news_imgs" name="news_imgs[]" multiple>
 </div>
 <hr>
   {{-- multi-fig --}}
@@ -52,7 +52,7 @@
 
   <div class="form-group">
     <label for="content">Content</label>
-    <textarea class="form-control" name="content" id="content" cols="30" rows="10">{{$news->content}}</textarea>
+    <textarea type="text" class="form-control" name="content" id="content" cols="30" rows="10">{!!$news->content!!}</textarea>
     {{-- <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}"> --}}
   </div>
 

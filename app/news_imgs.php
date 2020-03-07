@@ -24,6 +24,7 @@ class news_imgs extends Model
     /**
      * @var array
      */
+    protected $table = 'news_imgs';
     protected $fillable = ['news_id', 'image_url', 'sort', 'created_at', 'updated_at'];
 
 }

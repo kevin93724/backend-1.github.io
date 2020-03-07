@@ -28,12 +28,14 @@ class NewsController extends Controller
 
         $new_news = News::create($news_data);
 
-        $files = $request->file('news_imgs');
+
         //Create多張圖片
-        if ($request->hasFile('news_imgs')) {
+        if ($request->hasFile('news_imgs')) {  //news_img 來自create.blade.php name="news_img[]"
+            $files = $request->file('news_imgs');
+
             foreach ($files as $file) {
                 //上傳圖片
-                $path = $this->fileUpload($file,'news_imgss');
+                $path = $this->fileUpload($file,'news');
 
                 //建立News多張圖片的資料
                 $news_imgs = new news_imgs;
@@ -47,11 +49,23 @@ class NewsController extends Controller
     }
 
     public function edit($id) {
-        // $news = News::find($id);
+        // $news_data = $request -> first();
+        // $news = News::find($id);  //單筆
         $news = News::with("news_imgs")->find($id);
         return view ('admin/news/edit', compact('news'));
     }
+
     public function update(Request $request, $id) {
+
+        //法一
+        // $news = News::find($id);
+        // $news->img = $request->img;
+        // $news->title = $request->title;
+        // $news->content = $request->content;
+        // $news->save();
+
+        //法二
+        // News::find($id)->update($request->all());
 
         $request_data = $request->all();
 
@@ -69,6 +83,25 @@ class NewsController extends Controller
             $request_data['image'] = $path;
         }
 
+        //增加多張圖片上傳
+        if($request->hasFile('news_imgs')) {  //news_img 來自create.blade.php name="news_img[]"
+            $files = $request->file('news_imgs');
+
+            foreach ($files as $file) {
+                //上傳圖片
+                $path = $this->fileUpload($file,'news');
+
+                
+                //建立Newe多張圖檔
+                $news_imgs = new news_imgs;
+                $news_imgs->news_id = $item->id;   //DB裏的news id
+                $news_imgs->image_url = $path;
+                $news_imgs->save();
+            }
+
+        }
+
+
         $item->update($request_data);
 
         return redirect('/home/news');
@@ -77,6 +110,7 @@ class NewsController extends Controller
         // News::find($id)->update($request->all());
         // return redirect ('/home/news');
     }
+
     public function delete(Request $request, $id) {
 
         // console.log($id);
@@ -90,9 +124,9 @@ class NewsController extends Controller
         $item->delete();
 
         //多圖片刪除
-        $news_imgs_1 = news_imgs::where('news_id', $id)->get();
+        $news_imgs_1 = news_imgs::where('news_id','=' ,$id)->get();
         foreach ($news_imgs_1 as $news_img) {
-            $old_image = $news_img->image;
+            $old_image = $news_img->image_url;
             if(file_exists(public_path().$old_image)){
                 File::delete(public_path().$old_image);
             }
