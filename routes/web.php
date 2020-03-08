@@ -19,17 +19,31 @@ Route::get('/news/{id}', 'FrontController@news_detail'); //Content Page
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/news', 'NewsController@index');
 
-Route::get('/home/news/create', 'NewsController@create');
-Route::post('/home/news/store', 'NewsController@store');
+//後台管理
+Route::group(['middleware' => ['auth'], 'prefix' => '/home'], function(){
 
-Route::get('/home/news/edit/{id}', 'NewsController@edit');
-Route::post('/home/news/update/{id}', 'NewsController@update');
+    // 首頁
+    Route::get('/', 'HomeController@index');
 
-Route::post('/home/news/delete/{id}', 'NewsController@delete');
+    //最新消息管理
 
-Route::post('/home/ajax_delete_news_imgs', 'NewsController@ajax_delete_news_imgs');
-Route::post('/home/ajax_post_sort', 'NewsController@ajax_post_sort');
+    Route::get('news', 'NewsController@index');
+
+    Route::get('news/create', 'NewsController@create');
+    Route::post('news/store', 'NewsController@store');
+
+    Route::get('news/edit/{id}', 'NewsController@edit');
+    Route::post('news/update/{id}', 'NewsController@update');
+
+    Route::post('news/delete/{id}', 'NewsController@delete');
+
+    Route::post('ajax_delete_news_imgs', 'NewsController@ajax_delete_news_imgs');
+    Route::post('ajax_post_sort', 'NewsController@ajax_post_sort');
+
+});
+
+
+
 
 
