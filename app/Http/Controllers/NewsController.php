@@ -91,7 +91,7 @@ class NewsController extends Controller
                 //上傳圖片
                 $path = $this->fileUpload($file,'news');
 
-                
+
                 //建立Newe多張圖檔
                 $news_imgs = new news_imgs;
                 $news_imgs->news_id = $item->id;   //DB裏的news id
@@ -157,6 +157,32 @@ class NewsController extends Controller
         move_uploaded_file($file, public_path().'/upload/'.$dir.'/'.$filename);
         //回傳 資料庫儲存用的路徑格式
         return '/upload/'.$dir.'/'.$filename;
+    }
+
+    public function ajax_delete_news_imgs(Request $request) {
+        $newsimgid = $request->newsimgid;
+
+        $item = news_imgs::find($newsimgid);   //多張圖方法(model:NewsImgs)中的id
+
+        $old_image = $item->image_url;
+        if(file_exists(public_path().$old_image)){
+            File::delete(public_path().$old_image);
+        }
+
+        $item->delete();
+
+        // return $newsimgid;
+        return 'ajax success:'.$newsimgid;
+    }
+
+    public function ajax_post_sort(Request $request) {
+        $news_img_id = $request->img_id;
+        $sort = $request->sort_value;
+
+        $img = news_imgs::find($news_img_id);
+        $img->sort = $sort;
+        $img->save();
+        return "成功";
     }
 
     //

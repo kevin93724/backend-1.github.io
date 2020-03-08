@@ -1,5 +1,9 @@
 @extends('layouts/app')
 
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+
+@endsection
 
 
 @section('content')
@@ -24,7 +28,7 @@
   </div>
   <div class="form-group">
     <label for="content">Content</label>
-    <input type="text" class="form-control" id="content" name="content">
+    <textarea type="text" class="form-control summernote" id="content" name="content"></textarea>
   </div>
 
 
@@ -35,3 +39,20 @@
 </div>
 
 @endsection
+
+@section('js')
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+<script>
+        $('.summernote').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            // maxHeight: null,             // set maximum height of editor
+            // focus: true                  // set focus to editable area after initializing summernote
+        });
+</script>
+
+
+@endsection
+
