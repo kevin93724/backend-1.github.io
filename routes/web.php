@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => '/home'], function(){
     Route::post('ajax_delete_news_imgs', 'NewsController@ajax_delete_news_imgs');
     Route::post('ajax_post_sort', 'NewsController@ajax_post_sort');
 
+    Route::post('ajax_upload_img', 'UploadImgController@ajax_upload_img');
+    Route::post('ajax_delete_img', 'UploadImgController@ajax_delete_img');
+
 });
 
 

@@ -43,14 +43,72 @@
 @section('js')
 
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<script src="{{asset('js/summernote-zh-TW.js')}}"></script>
 
 <script>
-        $('.summernote').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            // maxHeight: null,             // set maximum height of editor
-            // focus: true                  // set focus to editable area after initializing summernote
+    $(document).ready(function() {
+        $('#content').summernote({
+            height: 300,
+            lang: 'zh-TW',
+            callbacks: {
+                onImageUpload: function(files) {
+                    for(let i=0; i < files.length; i++) {
+                        $.upload(files[i]);
+                    }
+                },
+                onMediaDelete : function(target) {
+                    $.delete(target[0].getAttribute("src"));
+                }
+            },
         });
+
+
+        $.upload = function (file) {
+            let out = new FormData();  //建立一個表單格式
+            out.append('file', file, file.name);  //將單筆檔案放入表單格式中(欄位name,檔案類型,檔案名稱)
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: '/admin/ajax_upload_img',
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: out,
+                success: function (img) {
+                    $('#content').summernote('insertImage', img);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus + " " + errorThrown);
+                }
+            });
+        };
+
+        $.delete = function (file_link) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: '/admin/ajax_delete_img',
+                data: {file_link:file_link},
+                success: function (img) {
+                    console.log("delete:",img);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus + " " + errorThrown);
+                }
+            });
+        }
+   });
 </script>
 
 
