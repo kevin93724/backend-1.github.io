@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,12 +32,16 @@
                                 <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                                 Home
                             </a>
-                           
+
                                 <a class="navbar-brand"  href="/home/news">
                                     <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                                     最新消息
                                 </a>
-                         
+                                <a class="navbar-brand"  href="/home/products">
+                                    <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+                                    產品
+                                </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,7 +49,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home/news">最新消息1</a>
+                            </li>
+                            {{-- top --}}
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    產品管理 <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/home/productType">
+                                    產品類別管理
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="">
+                                    產品管理
+                                    </a>
+                                </div>
+
+
+                            </li>
+                            {{-- //bot --}}
+
 
                     </ul>
 
