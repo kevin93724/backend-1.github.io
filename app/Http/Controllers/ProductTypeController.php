@@ -8,8 +8,8 @@ use App\ProductTypes;
 class ProductTypeController extends Controller
 {
     public function index() {
-
-        return view ('admin/productType/index');
+        $items = ProductTypes::all();
+        return view ('admin/productType/index', compact('items'));
     }
     public function create() {
 
@@ -17,6 +17,7 @@ class ProductTypeController extends Controller
     }
     public function store(Request $request) {
         $types=$request->all();
+        // dd($types);
         $product_types = ProductTypes::create($types);
         $product_types->save();
 

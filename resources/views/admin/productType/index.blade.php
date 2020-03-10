@@ -13,21 +13,19 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>image</th>
-                <th>title</th>
+                 <th>types</th>
                 <th>sort</th>
-                <th>content</th>
-                <th width="100"></th>
+                 <th width="100"></th>
 
             </tr>
         </thead>
         <tbody>
-          {{-- @foreach ($all_news as $item)
+          @foreach ($items as $item)
             <tr>
-                <td><img width="120" src="{{$item->image}}" alt=""></td>
-                <td>{{$item->title}}</td>
+
+                <td>{{$item->types}}</td>
                 <td>{{$item->sort}}</td>
-                <td>{!!$item->content!!}</td>
+
 
                 <td> <a href="/home/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                       <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
@@ -36,7 +34,7 @@
                     </form>
                 </td>
             </tr>
-          @endforeach --}}
+          @endforeach
 
 
         </tbody>

@@ -15,6 +15,9 @@ Route::get('/', 'FrontController@index');
 Route::get('/news', 'FrontController@news'); //List Page
 Route::get('/news/{id}', 'FrontController@news_detail'); //Content Page
 
+Route::get('/products', 'ProductsController@products'); //List Page
+Route::get('/products/{id}', 'ProductsController@products_detail'); //Content Page
+
 
 Auth::routes();
 
