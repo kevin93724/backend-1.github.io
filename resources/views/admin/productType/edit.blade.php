@@ -19,13 +19,14 @@
 <h1>新增最新消息</h1>
 
 
-<form method="POST" action="/home/news/update/{{$news->id}}" enctype="multipart/form-data">
+<form method="POST" action="/home/productType/update/{{$product_types->id}}" enctype="multipart/form-data">
     @csrf
-  <div class="form-group">
+    dd({{$product_types}})
+  {{-- <div class="form-group">
     <label for="img">現有主要圖片</label>
     <img class="mg-fluid" width="250" src="{{$news->image}}" alt="">
   </div>
-  {{-- multi-fig --}}
+
   <div class="form-group">
     <label for="title">重新上傳主要圖片(建議圖片尺寸寬400px x 高200px)</label>
     <input type="file" class="form-control" id="img" name="img">
@@ -47,25 +48,24 @@
     <label for="img">新增多張圖片組(建議圖片尺寸寬400px x 高200px)</label>
     <input type="file" class="form-control" id="news_imgs" name="news_imgs[]" multiple>
 </div>
-<hr>
-  {{-- multi-fig --}}
+<hr> --}}
 
 
 
   <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" name="title" value="{{$news->title}}">
+    <label for="tpyes">tpyes</label>
+    <input type="text" class="form-control" id="tpyes" name="tpyes" value="{{$product_types->tpyes}}">
   </div>
   <div class="form-group">
     <label for="sort">權重(數字越大的排在越前面)</label>
-    <input type="number" min="0" class="form-control" id="sort" name="sort" value="{{$news->sort}}">
+    <input type="number" min="0" class="form-control" id="sort" name="sort" value="{{$product_types->sort}}">
   </div>
 
-  <div class="form-group">
+  {{-- <div class="form-group">
     <label for="content">Content</label>
     <textarea type="text" class="form-control summernote" name="content" id="content" cols="30" rows="10">{!!$news->content!!}</textarea>
-    {{-- <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}"> --}}
-  </div>
+
+  </div> --}}
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

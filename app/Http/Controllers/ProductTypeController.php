@@ -23,5 +23,36 @@ class ProductTypeController extends Controller
 
         return redirect ('/home/productType');
     }
+    public function edit($id) {
+        // $news_data = $request -> first();
+        // $news = News::find($id);  //單筆
+        $product_types = ProductTypes::find($id);
+        return view ('admin/productType/edit', compact('product_types'));
+    }
+
+    public function update(Request $request, $id) {
+
+        //法一
+        // $news = News::find($id);
+        // $news->img = $request->img;
+        // $news->title = $request->title;
+        // $news->content = $request->content;
+        // $news->save();
+
+        //法二
+        // News::find($id)->update($request->all());
+
+        $request_data = $request->all();
+
+        $item = ProductTypes::find($id);
+
+        $item->update($request_data);
+        $item->save();
+
+        return redirect('/home/productType');
+
+
+
+    }
 
 }
