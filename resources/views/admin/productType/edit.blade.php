@@ -22,6 +22,7 @@
 <form method="POST" action="/home/productType/update/{{$product_types->id}}" enctype="multipart/form-data">
     @csrf
     dd({{$product_types}})
+    dd({{$product_types->types}})
   {{-- <div class="form-group">
     <label for="img">現有主要圖片</label>
     <img class="mg-fluid" width="250" src="{{$news->image}}" alt="">
@@ -53,8 +54,8 @@
 
 
   <div class="form-group">
-    <label for="tpyes">tpyes</label>
-    <input type="text" class="form-control" id="tpyes" name="tpyes" value="{{$product_types->tpyes}}">
+    <label for="types">types</label>
+    <input type="text" class="form-control" id="types" name="types" value="{{$product_types->types}}">
   </div>
   <div class="form-group">
     <label for="sort">權重(數字越大的排在越前面)</label>

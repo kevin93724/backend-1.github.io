@@ -42,13 +42,13 @@ class ProductTypeController extends Controller
         //法二
         // News::find($id)->update($request->all());
 
-        $request_data = $request->all();
+        // $request_data = $request->all();
 
-        $item = ProductTypes::find($id);
+        // $item = ProductTypes::find($id);
 
-        $item->update($request_data);
-        $item->save();
-
+        // $item->update($request_data);
+        // $item->save();
+        ProductTypes::find($id)->update($request->all());
         return redirect('/home/productType');
 
 
