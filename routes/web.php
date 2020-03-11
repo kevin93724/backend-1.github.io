@@ -10,16 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//前台管理
 Route::get('/', 'FrontController@index');
 
 Route::get('/news', 'FrontController@news'); //List Page
 Route::get('/news/{id}', 'FrontController@news_detail'); //Content Page
 
-Route::get('/products', 'ProductsController@products'); //List Page
-Route::get('/products/{id}', 'ProductsController@products_detail'); //Content Page
+Route::get('/products', 'FrontController@products'); //List Page
+Route::get('/products/{id}', 'FrontController@products_detail'); //Content Page
 
+Route::get('/contacts', 'FrontController@contacts'); //Contact Us
 
 Auth::routes();
+
+//首頁
 
 Route::get('/home', 'HomeController@index')->name('home');
 

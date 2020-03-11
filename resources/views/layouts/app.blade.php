@@ -65,9 +65,8 @@
                                     <a class="dropdown-item" href="/home/productType">
                                     產品類別管理
                                     </a>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+
+                                    <a class="dropdown-item" href="/home/products">
                                     產品管理
                                     </a>
                                 </div>

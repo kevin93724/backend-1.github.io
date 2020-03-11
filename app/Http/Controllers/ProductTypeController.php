@@ -50,8 +50,13 @@ class ProductTypeController extends Controller
         // $item->save();
         ProductTypes::find($id)->update($request->all());
         return redirect('/home/productType');
+    }
+    public function delete(Request $request, $id) {
 
-
+        // console.log($id);
+        $item = ProductTypes::find($id);
+        $item->delete();
+        return redirect('/home/productType');
 
     }
 
