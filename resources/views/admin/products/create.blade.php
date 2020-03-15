@@ -22,11 +22,12 @@
     <label for="products_imgs">多張影像圖路徑上傳</label>
     <input type="file" class="form-control" id="products_imgs" name="products_imgs[]"  multiple>
   </div>
+  {{-- {{$type}} --}}
   <div class="form-group">
     <label for="exampleFormControlSelect1">請輸入產品類別：</label>
     <select class="form-control" id="exampleFormControlSelect1"　name="type_id" >
         @foreach ($type as $item)
-            <option value={{$item->id}}>{{$item->type}}</option>
+            <option value={{$item->id}}>{{$item->types}}</option>
         @endforeach
     </select>
   </div>

@@ -21,6 +21,10 @@ Route::get('/products/{id}', 'FrontController@products_detail'); //Content Page
 
 Route::get('/contacts', 'FrontController@contacts'); //Contact Us
 
+Route::get('/add_cart/{id}', 'FrontController@add_cart'); //Cart 結帳
+Route::get('/cart_total', 'FrontController@cart_total'); //Cart 結帳
+Route::get('/cart', 'FrontController@cart'); //Cart 結帳
+
 Auth::routes();
 
 //首頁

@@ -26,6 +26,16 @@ class FrontController extends Controller
 
 
     }
+    //
+    public function cart() {
+
+        return view ('front/cart');
+    }
 
     //
+
+    public function cart_total() {
+        return view ('front/cart_total');
+
+    }
 }
