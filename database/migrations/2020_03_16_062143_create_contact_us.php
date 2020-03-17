@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProducts extends Migration
+class CreateContactUs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateProducts extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('contact_us', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image');
-            $table->string('title')->default("TEST TITLE");
-            $table->longText('content')->nullable();
-            $table->integer('sort')->default(0);
-            $table->string('type_id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('message');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -32,6 +29,6 @@ class CreateProducts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('contact_us');
     }
 }

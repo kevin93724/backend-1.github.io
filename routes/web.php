@@ -25,6 +25,9 @@ Route::get('/add_cart/{id}', 'FrontController@add_cart'); //Cart 結帳
 Route::get('/cart_total', 'FrontController@cart_total'); //Cart 結帳
 Route::get('/cart', 'FrontController@cart'); //Cart 結帳
 
+Route::get('/contactUs', 'FrontController@contactUs'); //聯絡我們
+Route::post('/contactUs/store', 'FrontController@contactUs_store'); //儲存使用者資料
+
 Auth::routes();
 
 //首頁

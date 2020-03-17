@@ -18,7 +18,7 @@
 <div class="container">
 <h1>產品管理-修改</h1>
 
-
+dd({{$products}})
 <form method="POST" action="/home/products/update/{{$products->id}}" enctype="multipart/form-data">
     @csrf
   <div class="form-group">

@@ -62,6 +62,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/contactUs">
+                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+                        聯絡我們
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/news">
                         <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                         最新消息

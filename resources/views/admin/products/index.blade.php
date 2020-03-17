@@ -24,8 +24,8 @@
         </thead>
         <tbody>
           @foreach ($all_products as $item)
-            <tr>
-                <td>{{$item->product_type->type}}</td>
+            <tr> 
+                <td>{{$item->product_type->types}}</td>
                 <td><img width="120" src="{{$item->image}}" alt=""></td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->sort}}</td>

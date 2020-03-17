@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;  //連結資料庫
+
 use App\News;
+use DB;  //連結資料庫
+use App\Products;
+use App\ContactUs;
+use App\Mail\SendToUser;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
 
 class FrontController extends Controller
@@ -26,6 +32,22 @@ class FrontController extends Controller
 
 
     }
+
+    public function products()
+    {
+        $products_data = Products::orderBy('sort', 'desc')->get();
+        return view('front/products', compact('products_data'));
+    }
+
+    public function products_detail($productId)
+    {
+        $Product = Products::find($productId);
+        return view('front/products_detail', compact('Product'));
+    }
+
+    
+
+
     //
     public function cart() {
 
@@ -36,6 +58,22 @@ class FrontController extends Controller
 
     public function cart_total() {
         return view ('front/cart_total');
+    }
+    //
+    public function contactUs() {
+        return view ('front/contactUs');
+    }
+    //
+
+    public function contactUs_store(Request $request){
+        $user_data = $request -> all();
+        $content = ContactUs::create($user_data);
+        Mail::to('kevin0114@gmail.com')->send(new OrderShipped($content)); //寄信
+
+        return redirect('/contactUs');
+
 
     }
+
+
 }
