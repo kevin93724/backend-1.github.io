@@ -2,56 +2,112 @@
 
 @section('css')
 <style>
-    .product-card .product-info .title{
-        width: 100%;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 48px;
-        color: #000;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .product-card .product-info .sub-title{
-        font-size: 20px;
-        line-height: 24px;
-        color: #757575;
-        margin-top: 8px;
+.Cart {
+  /* max-width: 800px; */
+  max-width: 100%;
+  margin: 50px auto;
+}
 
-    }
-    .product-card .product-info .price{
-        color: #ff6700;
-        font-weight: 400;
-    }
+.Cart__header {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2px;
+  margin-bottom: 2px;
+}
 
+.Cart__headerGrid {
+  text-align: center;
+  background: #f3f3f3;
+}
 
+.Cart__product {
+  display: grid;
+  grid-template-columns: 2fr 7fr 3fr 3fr 3fr 3fr;
+  grid-gap: 2px;
+  margin-bottom: 2px;
+  height: 120px;
+}
 
-    .product-card .color{
-    padding: 10px 20px;
-    width: 160px;
-    min-height: 58px;
-    height: 100%;
-    font-size: 16px;
-    line-height: 20px;
-    color: #757575;
-    text-align: center;
-    border: 1px solid #eee;
-    /* background-color: #fff; */
-    background-color:white;
+.Cart__productGrid {
+  padding: 5px;
+}
 
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transition: opacity,border .2s linear;
-    cursor:pointer;
-    }
-    .product-card .color.active{
-    color: #424242;
-    border-color: #ff6700;
-    transition: opacity,border .2s linear;
-    }
+.Cart__productImg {
+  background-image: url(https://fakeimg.pl/640x480/c0cfe8/?text=Img);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.Cart__productTitle {
+  overflow: hidden;
+  line-height: 25px;
+}
+
+.Cart__productPrice,
+.Cart__productQuantity,
+.Cart__productTotal,
+.Cart__productDel {
+  text-align: center;
+  line-height: 60px;
+}
+
+@media screen and (max-width: 820px) {
+  .Cart__header {
+    display: none;
+  }
+
+  .Cart__product {
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-areas:
+      "img title title title title title del"
+      "img price price quantity total total del";
+  }
+
+  .Cart__productImg {
+    grid-area: img;
+  }
+
+  .Cart__productTitle {
+    grid-area: title;
+  }
+
+  .Cart__productPrice,
+  .Cart__productQuantity,
+  .Cart__productTotal,
+  .Cart__productDel {
+    line-height: initial;
+  }
+
+  .Cart__productPrice {
+    grid-area: price;
+    text-align: right;
+  }
+
+  .Cart__productQuantity {
+    grid-area: quantity;
+    text-align: left;
+  }
+
+  .Cart__productQuantity::before {
+    content: "x";
+  }
+
+  .Cart__productTotal {
+    grid-area: total;
+    text-align: right;
+    color: red;
+  }
+
+  .Cart__productDel {
+    grid-area: del;
+    line-height: 60px;
+    background: #ffc0cb26;
+  }
+}
 
 
 </style>
@@ -60,141 +116,121 @@
 
 
 @section('content')
-<section class="engine"><a href="https://mobirise.info/x">css templates</a></section><section class="features3 cid-rRF3umTBWU" id="features3-7" style="padding-top: 100px">
-
-
-
-
+<section class="engine"><a href="https://mobirise.info/x">css templates</a></section><section class="features3 cid-rRF3umTBWU" id="features3-7" style="padding-top: 100px; padding-bottom: 100px">
     <div class="container">
-        <div class="media-container-row ">
-            <div class="col-6">
+
+        <div class="Cart">
+            <div class="Cart__header">
+              <div class="Cart__headerGrid">商品</div>
+              <div class="Cart__headerGrid">單價</div>
+              <div class="Cart__headerGrid">數量</div>
+              <div class="Cart__headerGrid">小計</div>
+              <div class="Cart__headerGrid">刪除</div>
             </div>
-
-
-            <div class="col-6">
-                <div class="product-card">
-                    <div class="product-info">
-                        <div class="title">Redmi Note 8 Pro</div>
-                        <div class="sub-title">6GB+64GB, 冰翡翠</div>
-                        <div class="price">NT$6599</div>
-                    </div>
-                    <div class="product-tips">
-                        雙倍
-                        該商品可享受雙倍積分
-                    </div>
-                    <div class="product-capacity">
-                        <h3> 容量</h3>
-                        <div class="row">
-
-                            <div class="col-4">
-                                <div class="color">6GB+64GB</div>
-                            </div>
-                            <div class="col-4">
-                                <div class="color">6GB+128GB</div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="product-color">
-                        <h3> 顏色</h3>
-                            <div class="row">
-
-                                <div class="col-4">
-                                    <div class="color active" data-color="紅">紅</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="color" data-color="黃">黃</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="color" data-color="綠">綠</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="color" data-color="紫">紫</div>
-                                </div>
-                            </div>
-                    </div>
-                    <form action="" method="post">
-                        <div class="product-qty">
-                            數量
-                            <a id="minus" href="#">-</a>
-                            <input type="number" value="1" id="qty">
-                            <a id="plus" href="#">+</a>
-
-                        </div>
-                        <div class="product-total">
-                            <div>
-                                <span>Redmi Note 8 Pro</span>
-                                <span>冰翡翠</span>
-                                <span>6GB+64GB</span>*<span>1</span>
-                                <small>NT$6,599</small>
-                                總計：NT$6,599
-                            </div>
-
-                        </div>
-                        <input type="text" name="product_id" id="product_id" value="">
-                        <input type="text" name="capacity" id="capacity">
-                        <input type="text" name="color" id="color" value="紅">
-                        <br>
-                        <button>立即購買</button>
-                        {{-- 立即購買 --}}
-                    </form>
-
-
-                {{-- <input type="text"> --}}
-
+            @foreach ($items as $item)
+                <div class="Cart__product">
+                <div class="Cart__productGrid Cart__productImg"></div>
+                <div class="Cart__productGrid Cart__productTitle">
+                    {{$item->name}}
                 </div>
+                <div class="Cart__productGrid Cart__productPrice">${{$item->price}}</div>
+                <div class="Cart__productGrid Cart__productQuantity">
+                    <button class="btn btn-sm btn-info btn-minus" data-itemid="{{$item->id}}">-</button>
+                    <span class="qty" data-itemid="{{$item->id}}">{{$item->quantity}}</span>
+                    <button class="btn btn-sm btn-info btn-plus" data-itemid="{{$item->id}}">+</button>
+                </div>
+                <div class="Cart__productGrid Cart__productTotal">${{$item->price * $item->quantity}}</div>
+                <div class="Cart__productGrid Cart__productDel">
+                    <button class="btn btn-sm btn-info btn-delete" data-itemid="{{$item->id}}">&times;</button>
+                </div>
+                </div>
+            @endforeach
 
-            </div>
-
-        </div>
+          </div>
 
 
-        </div>
+
+
     </div>
+
 </section>
 @endsection
 
 @section('js')
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-    $('.product-card .color').click(function(){
-        //Change 框 color
+    $('.btn-minus').click(function () {
+        var itemid = this.getAttribute('data-itemid');
 
-        $('.product-card .color').removeClass("active");
-        $(this).addClass("active");
+        $.ajax({
+            method: 'POST',
+            url: '/update_cart/'+itemid,
+            data: {
+                quantity:-1
+            },
+            success: function (res) {
 
-        //add color put in input-value
+                // var old_value = $(`.qty[data-itemid="${itemid}"]`).text();
+                // var new_value = parseInt(old_value) + quantity;
+                // $(`.qty[data-itemid="${itemid}"]`).text(new_value);
+
+                window.location.reload();
 
 
-        //get data attrbute value
-        var color = $(this).attr("data-color");
-        // console.log(color);
-
-        //change  input value jq
-        $('#color').val(color);
-    })
-
-    $(function(){
-
-    var valueElement = $('#qty');
-    function incrementValue(e){
-        // get now value
-        var now_number = $('#qty').val();
-
-        //add increment value
-        var new_number = Math.max( e.data.increment + parseInt(now_number), 0);
-        $('#qty').val(new_number)
-        // valueElement.text(Math.max(parseInt(valueElement.text()) + e.data.increment, 0));
-        return false;
-    }
-
-    $('#plus').bind('click', {increment: 1}, incrementValue);
-
-    $('#minus').bind('click', {increment: -1}, incrementValue);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
 
     });
+
+    $('.btn-plus').click(function () {
+        var itemid = this.getAttribute('data-itemid');
+
+        $.ajax({
+            method: 'POST',
+            url: '/update_cart/'+itemid,
+            data: {
+                quantity:1
+            },
+            success: function (res) {
+                // var old_value = $(`.qty[data-itemid="${itemid}"]`).text();
+                // var new_value = parseInt(old_value) + quantity;
+                // $(`.qty[data-itemid="${itemid}"]`).text(new_value);
+                window.location.reload()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    });
+
+    $('.btn-delete').click(function () {
+        var itemid = this.getAttribute('data-itemid');
+
+        var r=confirm("確定要將此商品從購物車移除嗎?")
+        if (r==true){
+            $.ajax({
+                method: 'POST',
+                url: '/delete_cart/'+itemid,
+                data: {},
+                success: function (res) {
+                    window.location.reload()
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus + " " + errorThrown);
+                }
+            });
+        }
+    });
+
+
 
 
 </script>
